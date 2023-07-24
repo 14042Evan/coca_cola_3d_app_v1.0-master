@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Coca Cola 3D apps</title>
+
+   <!-- font awesome cdnjs link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+   <!-- bootstrap cdnjs link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+
+   <!-- X3dom -->
+   <link rel='stylesheet' type='text/css' href='css/x3dom.css'>
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+   <!-- header section starts     -->
+
+   <header class="header fixed-top">
+
+      <div class="container">
+
+         <div class="row align-items-center">
+
+            <a href="#" class="logo mr-auto"> <i class="bi bi-cup-straw"></i> Coca Cola </a>
+
+            <nav class="nav">
+               <a href="#home">home</a>
+               <a href="#drinks">drinks</a>
+               <a href="#gallery">gallery</a>
+               <a href="#contact">contact</a>
+            </nav>
+
+            <div class="icons">
+               <div id="menu-btn" class="fas fa-bars"></div>
+               <div id="login-btn" class="fas fa-user"></div>
+            </div>
+
+         </div>
+
+      </div>
+
+   </header>
+
+   <!-- user starts -->
+
+   <div class="login-form">
+
+      <form action="">
+         <div id="close-login-form" class="fas fa-times"></div>
+         <a href="#" class="logo mr-auto"> <i class="bi bi-cup-straw"></i> Coca Cola 3D apps </a>
+         <h3>Yifan Song 268519</h3>
+         <h3>https://github.com/14042Evan/coca_cola_3d_app_v1.0</h3>
+      </form>
+
+   </div>
+
+   <!-- user ends -->
+
+   <!-- header section ends    -->
+
+   <!-- home section starts  -->
+
+   <section class="home" id="home">
+
+      <div class="container">
+
+         <div class="row align-items-center text-center text-md-left min-vh-100">
+            <div class="col-md-6">
+               <span>Founded in 1886 Dr John S Pemberton</span>
+               <h3>Refreshing the world, one story at a time</h3>
+               <a href="#" class="link-btn">get started</a>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- home section ends -->
+
+   <!-- about drinks section starts  -->
+
+   <section class="about" id="drinks">
+      <!-- cola Zero -->
+      <div class="container">
+
+         <div class="row align-items-center">
+            <div class="col-md-6">
+               <x3d>
+                  <scene>
+                     <!-- lighting section -->
+                     <navigationInfo id="head" headlight='false' type='"EXAMINE"'></navigationInfo>
+                     <background skyColor="10 10 10"></background>
+                     <directionalLight id="directional" direction='0 -1 0' on="TRUE" intensity='1.0'
+                        shadowIntensity='0.5' shadowCascades="1" shadowFilterSize="16" shadowMapSize="512">
+                     </directionalLight>
+
+                     <Inline nameSpaceName="Cola_Zero" mapDEFToID="true" onclick='redNose();'
+                        url="./x3d/Cola_Zero.x3d" />
+
+                     <Viewpoint position="2.44723 50 100" orientation="-0.99727 0.07070 -0.02151 0.5">
+                     </Viewpoint>
+                  </scene>
+               </x3d>
+            </div>
+            <div class="col-md-6">
+               <span>Coke Zero</span>
+               <h3 class="title">3D view Shadows</h3>
+               <b>shadowIntensity</b><br>
+               0 <input type="range" id="sliderShadowIntesity" min="0.0" max="1.0" step="0.05" value="0.5"
+                  onchange="changeSetting('shadowIntensity', this.value)" />1<br>
+               <br>
+               <b>shadowMapSize</b><br>
+               32 <input type="range" id="sliderShadowMapSize" min="32" max="2048" value="512"
+                  onchange="changeSetting('shadowMapSize', this.value)" /> 2048<br>
+               <br>
+               <b>shadowFilterSize</b><br>
+               0 <input type="range" id="sliderShadowFilterSize" min="0" max="32" value="16"
+                  onchange="changeSetting('shadowFilterSize', this.value)" /> 32<br>
+               <br>
+               <b>shadowCascades</b><br>
+               0 <input type="range" id="sliderShadowCascades" min="0" max="10" value="1"
+                  onchange="changeSetting('shadowCascades', this.value)" /> 10<br>
+               <a class="link-btn" onclick="lightSwitch('directional')">Light Switch</a>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+   <!-- Sprite -->
+   <section class="about" id="drinks">
+
+      <div class="container">
+
+         <div class="row align-items-center">
+            <div class="col-md-6">
+               <x3d id="model">
+                  <scene>
+                     <inline nameSpaceName="model" mapDEFToID="true" onclick="animateModel();" url="./x3d/soda.x3d">
+                     </inline>
+                  </scene>
+               </x3d>
+            </div>
+            <div class="col-md-6">
+               <span>Sprite</span>
+               <h3 class="title">Wireframe rendering</h3>
+               <a class="dropdown-item" onclick="cameraFront();">Front</a>
+               <a class="dropdown-item" onclick="cameraBack();">Back</a>
+               <a class="dropdown-item" onclick="cameraLeft();">Left</a>
+               <a class="dropdown-item" onclick="cameraRight();">Right</a>
+               <a class="dropdown-item" onclick="cameraTop();">Top</a>
+               <a class="dropdown-item" onclick="cameraBottom();">Bottom</a>
+               <a class="link-btn" onclick="wireframe();">Wireframe</a>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- Monster energy  -->
+   <section class="about" id="drinks">
+
+      <div class="container">
+
+         <div class="row align-items-center">
+            <div class="col-md-6">
+               <x3d>
+                  <scene>
+                     <transform DEF="ball">
+                        <Inline nameSpaceName="Cola_Zero" mapDEFToID="true" onclick='redNose();'
+                           url="./x3d/Monster energy.x3d" />
+                     </transform>
+                     <background skyColor="10 10 10"></background>
+                     <Viewpoint position="2.44723 50 100" orientation="-0.99727 0.07070 -0.02151 0.5">
+                     </Viewpoint>
+                     <timeSensor DEF="time" cycleInterval="2" loop="true"></timeSensor>
+                     <PositionInterpolator DEF="move" key="0 0.5 1" keyValue="0 0 0  0 5 0  0 0 0">
+                     </PositionInterpolator>
+                     <Route fromNode="time" fromField="fraction_changed" toNode="move" toField="set_fraction"></Route>
+                     <Route fromNode="move" fromField="value_changed" toNode="ball" toField="translation"></Route>
+
+                  </scene>
+               </x3d>
+            </div>
+            <div class="col-md-6">
+               <span>Monster energy</span>
+               <h3 class="title">3D View Animation</h3>
+               <p>Monster Energy Original Green 500ml can, great tasting energy drink with energy blend and 180mg
+                  caffeine. The Monster Energy blend combined with caffeine gives you the energy you need in a smooth
+                  easy drinking flavour. Serve cold for maximum refreshment.</p>
+               <a href="https://www.monsterenergy.com/en-gb/energy-drinks/monster-energy/original-green/"
+                  class="link-btn">read more</a>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- about drinks section ends -->
+
+   <!-- gallery section starts  -->
+
+   <section class="gallery" id="gallery">
+
+      <h1 class="heading"> Product gallery </h1>
+
+      <div class="box-container container">
+
+         <div class="box">
+            <img src="images/The-Real-Reason-the-Coca-Cola-Logo-is-Red_570538087_tok-anas-ft.jpg" alt="">
+            <div class="content">
+               <h3>Coca Cola</h3>
+               <p>Refresh your thirst with the original Coca-Cola.</p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <img src="images/sprite.jpg" alt="">
+            <div class="content">
+               <h3>Coca Cola</h3>
+               <p>Open happiness with every sip of Coca-Cola.</p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <img src="images/Coca-cola-1463147.jpg" alt="">
+            <div class="content">
+               <h3>Coca Cola</h3>
+               <p>Ice-cold Coca-Cola, perfect for any occasion.</p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <img src="images/c6ac000e-9406-451e-a77e-a259bc2eccf5.png" alt="">
+            <div class="content">
+               <h3>Coca Cola</h3>
+               <p>Share a Coke with the people who matter most to you.</p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <img src="images/banner1.0.jpg" alt="">
+            <div class="content">
+               <h3>Coca Cola</h3>
+               <p>Nothing beats the classic taste of Coca-Cola.</p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <img src="images/-1x-1.jpg" alt="">
+            <div class="content">
+               <h3>Coca Cola</h3>
+               <p>Coca-Cola, the world's favorite beverage for over 100 years.</p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- gallery section ends -->
+
+   <!-- contact section starts  -->
+
+   <section class="contact" id="contact">
+
+      <h1 class="heading"> contact me </h1>
+
+      <div class="container">
+
+         <div class="contact-info-container">
+
+            <div class="box">
+               <i class="fas fa-phone"></i>
+               <h3>phone</h3>
+               <p>+44 11223344</p>
+            </div>
+
+            <div class="box">
+               <i class="fas fa-envelope"></i>
+               <h3>email</h3>
+               <p>ys444@sussex.ac.uk</p>
+            </div>
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- contact section ends -->
+
+   <!-- blogs section starts  -->
+
+   <section class="blogs" id="blogs">
+
+      <h1 class="heading"> More 3D product models </h1>
+
+      <div class="box-container container">
+
+         <div class="box">
+            <div class="image">
+               <img src="images/79b4420408bce89aefe43d5b628dbbdc.jpg" alt="">
+            </div>
+            <div class="content">
+               <h3>Coca-Cola Summer & Winter Aluminum Bottle 2015 France</h3>
+               <p>Coca-Cola released two limited editions, playing with the hot / cold contrast, through the use of
+                  heat-sensitive ink. In ideal drinking temperature (cold), the bottles reveal the eyes of animals. </p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+            <div class="icons">
+               <span> <i class="fas fa-calendar"></i> 03st may, 2023 </span>
+               <span> <i class="fas fa-user"></i> by Yifan Song</span>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="images/81b834448f1ed7d815e01163a7b06cd0.jpg" alt="">
+            </div>
+            <div class="content">
+               <h3>Process Small</h3>
+               <p>Process Small designed by Design at Sketch. Connect with them on Dribbble; the global community for
+                  designers and creative professionals.</p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+            <div class="icons">
+               <span> <i class="fas fa-calendar"></i> 03st may, 2023 </span>
+               <span> <i class="fas fa-user"></i> by Yifan Song</span>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="images/cd09a0b0b212b77baac7bda2fbc4e001.jpg" alt="">
+            </div>
+            <div class="content">
+               <h3>Coca Cola | Art Direction | Full CGI & Retouching.</h3>
+               <p>COCA COLA: OPEN HAPPINESSPersonal Project: The motive was to learn & enhance product visualization
+                  skills along with some liquid simulations in CGI.</p>
+               <a href="#" class="link-btn">read more</a>
+            </div>
+            <div class="icons">
+               <span> <i class="fas fa-calendar"></i> 03st may, 2023 </span>
+               <span> <i class="fas fa-user"></i> by Yifan Song</span>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- blogs section ends -->
+
+   <!-- footer section starts  -->
+
+   <section class="footer container">
+
+      <a href="#" class="logo"> <i class="bi bi-cup-straw"></i> Coca Cola 3D apps </a>
+
+      <p class="credit"> created by <span>Yifan Song 268519</span></p>
+
+      <div class="share">
+         <a href="#" class="fab fa-facebook-f"></a>
+         <a href="#" class="fab fa-linkedin"></a>
+         <a href="#" class="fab fa-twitter"></a>
+         <a href="https://github.com/14042Evan/coca_cola_3d_app_v1.0" class="fab fa-github"></a>
+      </div>
+
+   </section>
+
+   <!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+   <!-- custom js file link  -->
+   <script src="js/script.js"></script>
+
+   <!-- Include the x3dom JavaScript -->
+   <script src='js/x3dom.js'></script>
+
+   <!-- x3dom script file link  -->
+   <script>
+      // Shadows
+      function changeSetting(field, value) {
+         var dirLight = document.getElementById("directional");
+
+         dirLight.setAttribute(field, value);
+      }
+      // wireframe
+      function wireframe() {
+         var e = document.getElementById('model');
+         e.runtime.togglePoints(true);
+         e.runtime.togglePoints(true);
+      }
+      // lights
+      function lightSwitch(id) {
+         var light = document.getElementById(id);
+         if (light.getAttribute('on') != 'TRUE')
+            light.setAttribute('on', 'TRUE');
+         else
+            light.setAttribute('on', 'FALSE');
+      }
+
+      function headlight() {
+         var h = document.getElementById("head");
+         if (h.getAttribute('headlight') == 'true')
+            h.setAttribute('headlight', 'false');
+         else
+            h.setAttribute('headlight', 'true');
+      }
+
+      // camera
+      function cameraFront() {
+         document.getElementById('model__CameraFront').setAttribute('bind', 'true');
+      }
+
+      function cameraBack() {
+         document.getElementById('model__CameraBack').setAttribute('bind', 'true');
+      }
+
+      function cameraLeft() {
+         document.getElementById('model__CameraLeft').setAttribute('bind', 'true');
+      }
+
+      function cameraRight() {
+         document.getElementById('model__CameraRight').setAttribute('bind', 'true');
+      }
+
+      function cameraTop() {
+         document.getElementById('model__CameraTop').setAttribute('bind', 'true');
+      }
+
+      function cameraBottom() {
+         document.getElementById('model__CameraBottom').setAttribute('bind', 'true');
+      }
+
+   </script>
+
+
+
+</body>
+
+</html>
